@@ -1,0 +1,23 @@
+html, body {
+    height:100%;
+    box-sizing: border-box;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calc {
+    padding: 10px;
+    background-color: aquamarine;
+}
+.screen {
+    background-color: beige;
+}
+.content {
+    display: flex;
+}
+
+.operation {
+    display: flex;
+    flex-direction: column;
+}
