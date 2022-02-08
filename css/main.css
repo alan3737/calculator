@@ -14,17 +14,31 @@ html, body {
     padding: 10px;
     background-color:#86c6be;
     border:solid black;
-    height: 300px;
+    height: 400px;
     width: 300px;
     border-radius:20px;
 }
 .screen {
+    
+    text-align: end;
     background-color: beige;
     margin-bottom: 5px;
-    font-size: 30px;
+    font-size: 50px;
     padding:5px;
+    border-radius: 10px;
+    height:60px;
+    
+}
+.cleaner {
+    display: flex;
+    justify-content: space-around;
 }
 
+.cleaner button {
+    padding:10px;
+    margin: 5px;
+    flex-grow: 1;
+}
 .box {
     display:flex;
     flex-grow: 1;
@@ -43,13 +57,20 @@ html, body {
     background-color: #f1ebec;
 }
 
+.row {
+    align-items: center;
+}
+
 .operation {
     flex-direction: column;
+    padding:7px 0px;
+    align-items:end;
 }
 
 .operation button {
+    height:50px;
+    width:50px;
     margin:5px;
-    flex-grow: 1;
     border-radius: 10px;
     background-color: #f1ebec;
 }
@@ -64,4 +85,8 @@ button:hover {
 
 #equal {
     background-color: #a6c64c;
+}
+
+#back {
+    background-color: mediumpurple;
 }

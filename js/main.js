@@ -31,56 +31,55 @@ const operate = function(a, b, op) {
 }
 
 const compute = function (e) {
-    if (this.textContent === "clear") {
+    if (this.textContent === "back") {
+        arr.pop();
+        screen.textContent = screen.textContent.slice(0, screen.textContent.length - 1);
+    } else if (this.textContent === "clear") {
         arr = [];
-        value = 0;
-        dec = 0;
         screen.textContent = 0;
-    } else if (this.textContent in {'+': true, '-': true, '*':true, '/': true}) {
-        arr.push([value, this.textContent]);
-        value = 0;
-        dec = 0;
-        screen.textContent = this.textContent;
-    } else if (this.textContent === "=") {
+    }  else if (this.textContent === "=") {
+        let total = 0;
+        let value = 0;
         let op = null;
-        let num = arr.reduce(function(t,v) {
-            if(op === null) {
-                op = v[1];
-                return v[0];   
-            } else {
-                let m = operate(t, v[0], op);
-                op = v[1];
-                return m
+        let dec = 0;
+        arr.forEach(function(n) {
+            if (n === ".") {
+                dec = 10;
+            } else if (!isNaN(n)) {
+                if (dec > 0) {
+                    value = value + (n / dec);
+                    dec *= 10;
+                } else {
+                    value = value * 10 + n;
+                }
+            } else  {
+                if(total === 0) {
+                    total = value;
+                } else {
+                    total = operate(total, value, op);
+                }        
+                value = 0;
+                op = n;
+                dec = 0;
             }
-        }, 0);
-        screen.textContent = operate(num, value, op);
-        value = 0;
-        dec = 0;
-        arr = [];
-    } else if (this.textContent === "."){
-        dec = 10;
-        screen.textContent += ".";
+        });
+        let solu = operate(total, value, op);
+        screen.textContent = solu;
+        arr = [solu];
+    } else if(this.textContent === "." || !isNaN(this.textContent)) {
+        if (screen.textContent === "0" || isNaN(screen.textContent)) {
+            screen.textContent = "";
+        } 
+        screen.textContent += this.textContent;
+        arr.push(+this.textContent);
     } else {
-        if (dec > 0) {
-            value += (this.textContent / dec);
-            dec *= 10;
-        } else {
-            value = value * 10 + (+this.textContent);
-        }
-        screen.textContent = value;
+        arr.push(this.textContent);
+        screen.textContent = this.textContent;
     }
 }
-let arr = []
-let value = 0;
-let dec = 0;
 
+let arr = []
 const buttons = document.querySelectorAll("button");
 const screen = document.querySelector(".screen");
-
-
-
 buttons.forEach(button => button.addEventListener('click', compute));
-
-// object of number and op
-// 1:+, 2:-, 5:*, 10:=
 
