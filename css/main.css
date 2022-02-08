@@ -18,17 +18,17 @@ html, body {
     width: 300px;
     border-radius:20px;
 }
+
 .screen {
-    
     text-align: end;
     background-color: beige;
     margin-bottom: 5px;
     font-size: 50px;
     padding:5px;
     border-radius: 10px;
-    height:60px;
-    
+    height:60px;   
 }
+
 .cleaner {
     display: flex;
     justify-content: space-around;
@@ -39,6 +39,7 @@ html, body {
     margin: 5px;
     flex-grow: 1;
 }
+
 .box {
     display:flex;
     flex-grow: 1;
@@ -80,7 +81,7 @@ button:hover {
 }
 
 #clear {
-    background-color: #ff955f;
+    background-color: lightcoral;
 }
 
 #equal {
