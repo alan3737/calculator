@@ -13,7 +13,6 @@ html, body {
     flex-direction: column;
     padding: 10px;
     background-color:#86c6be;
-
     height: 400px;
     width: 300px;
     border-radius:20px;
@@ -28,6 +27,7 @@ html, body {
     padding:5px;
     border-radius: 10px;
     height:60px;   
+    overflow: hidden;
 }
 
 .cleaner {
