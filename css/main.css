@@ -13,10 +13,11 @@ html, body {
     flex-direction: column;
     padding: 10px;
     background-color:#86c6be;
-    border:solid black;
+
     height: 400px;
     width: 300px;
     border-radius:20px;
+    box-shadow: 0px 0px 14px 3px rgb(0 110 143 / 74%);
 }
 
 .screen {
@@ -56,24 +57,11 @@ html, body {
     height:50px;
     width:50px;
     background-color: #f1ebec;
+    border-radius: 10px;
 }
 
 .row {
     align-items: center;
-}
-
-.operation {
-    flex-direction: column;
-    padding:7px 0px;
-    align-items:end;
-}
-
-.operation button {
-    height:50px;
-    width:50px;
-    margin:5px;
-    border-radius: 10px;
-    background-color: #f1ebec;
 }
 
 button:hover {
