@@ -22,6 +22,9 @@ const divide = function(a, b) {
 }
 
 const operate = function(a, b, op) {
+    if (op == 0) {
+        return 0;
+    }
     switch(op) {
         case '+':
             return add(a, b);
@@ -35,23 +38,21 @@ const operate = function(a, b, op) {
 }
 
 
-
 const compute = function (e) {
     if (this.textContent === "back") {
         cur = Math.floor(cur / 10);
         screen.textContent = screen.textContent.slice(0, screen.textContent.length - 1);
     } else if (this.textContent === "clear") {
-        screen.textContent = 0;
         prev = 0;
         cur = 0;
         op = 0;
+        screen.textContent = 0;
     }  else if (this.textContent === "=" && op != 0 && cur != 0) {
         prev = operate(prev, cur, op);
         cur = 0;
         op = 0;
         screen.textContent = prev;
-    } else if (this.textContent === "." && op === 0) {
-        // do decimal and finished
+    } else if (this.textContent === "." ) {
         screen.textContent += ".";
     } else if (!isNaN(this.textContent)) {
         if (cur === 0 || isNaN(screen.textContent) ) {
@@ -59,7 +60,7 @@ const compute = function (e) {
         } else {
             screen.textContent += this.textContent;
         }
-        cur = cur * 10 + (+this.textContent);
+        cur = +(screen.textContent);
     } else {
         if (prev === 0) {
             prev = cur;
@@ -68,7 +69,6 @@ const compute = function (e) {
         cur = 0;
         screen.textContent = this.textContent;
     }
-    console.log(prev, cur, op);
 }
 
 const buttons = document.querySelectorAll("button");
